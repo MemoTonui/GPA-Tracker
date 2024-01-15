@@ -3,9 +3,17 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
+type UserData = {
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    // Add other properties if needed
+  };
+
 export default function ProfilePage() {
 const router= useRouter()
-const [data, setData] = useState({})
+const [data, setData] = useState<UserData>({});
 
 const getUserDetails = async()=>{
     const res= await axios.get("/api/users/userinfo")
